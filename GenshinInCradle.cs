@@ -78,8 +78,6 @@ internal class GenshinInCradle : BaseUnityPlugin {
             NelM2DBase nm2d = M2DBase.Instance as NelM2DBase;
             if (nm2d != null) {
                 UILogRow row = COOK.autoSave(nm2d, false, true);
-                UILog.Instance.AddAlert("随地存档有死档风险，请知晓。");
-                UILog.Instance.AddAlert("如果落入不可离开的洞穴，可以尝试 F7 菜单。");
             }
         }
         if (Configs.configGetAllItemsShortcut.Value.IsDown())

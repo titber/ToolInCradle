@@ -53,7 +53,7 @@ public class Configs {
         configDisplayBoundingBox = Config.Bind("高级功能", "显示实体碰撞箱", true);
         configDisplayMapBox = Config.Bind("高级功能", "显示地图碰撞箱", false);
         configDisplayPlayer = Config.Bind("高级功能", "显示玩家详细信息", true);
-        configDisplayMagicItem = Config.Bind("高级功能", "显示魔法信息", true);
+        configDisplayMagicItem = Config.Bind("高级功能", "显示魔法信息", false);
         configBurstFaintReverse = Config.Bind("高级功能", "圣光显示差值", false);
         configPauseShortcut = Config.Bind("TAS 相关", "暂停游戏", new KeyboardShortcut(KeyCode.End));
         configFasterShortcut = Config.Bind("TAS 相关", "加速 5 帧", new KeyboardShortcut(KeyCode.PageUp));
