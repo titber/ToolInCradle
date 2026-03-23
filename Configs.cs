@@ -33,12 +33,16 @@ public class Configs {
     public static ConfigEntry<bool> configTheOneYouWhoSee;
     public static ConfigEntry<bool> configAlwaysShowCursor;
     public static ConfigEntry<bool> configSuppressGLFlush;
+    public static ConfigEntry<bool> configAlwaysF7;
     public static ConfigEntry<KeyboardShortcut> configResetPassedFramesShortcut;
     public static ConfigEntry<KeyboardShortcut> configReplaySoundShortcut;
     public static ConfigEntry<KeyboardShortcut> configSaveSoundShortcut;
     public static ConfigEntry<KeyboardShortcut> configReadSoundShortcut;
     public static ConfigEntry<KeyboardShortcut> configGetAllItemsShortcut;
     public static ConfigEntry<KeyboardShortcut> configSaveImmediatelyShortcut;
+    public static ConfigEntry<KeyboardShortcut> configShowEnemyListShortcut;
+    public static ConfigEntry<KeyboardShortcut> configGetSeeds;
+    public static ConfigEntry<int> configGetSeedNum;
     public static void init(ConfigFile Config) {
         configAdvancedBool = Config.Bind("高级功能", "高级功能总开关", false);
         configAdvancedBoxLayer = Config.Bind("高级功能", "碰撞箱图层", "M2D Camera -mover");
@@ -73,11 +77,15 @@ public class Configs {
         configTheOneYouWhoSee = Config.Bind("神秘开关", "你看到的我", false);
         configAlwaysShowCursor = Config.Bind("杂项", "不隐藏鼠标", false);
         configSuppressGLFlush = Config.Bind("杂项", "激进优化", false);
-        configResetPassedFramesShortcut = Config.Bind("音效回放", "重置刻数", new KeyboardShortcut(KeyCode.F11,KeyCode.D));
+        configAlwaysF7 = Config.Bind("杂项", "自动 F7 (重启游戏生效)", true);
+        configResetPassedFramesShortcut = Config.Bind("音效回放", "重置刻数", new KeyboardShortcut(KeyCode.F11, KeyCode.D));
         configReplaySoundShortcut = Config.Bind("音效回放", "开始回放", new KeyboardShortcut(KeyCode.F11, KeyCode.P));
         configSaveSoundShortcut = Config.Bind("音效回放", "保存回放", new KeyboardShortcut(KeyCode.F11, KeyCode.S));
         configReadSoundShortcut = Config.Bind("音效回放", "读取回放", new KeyboardShortcut(KeyCode.F11, KeyCode.R));
         configSaveImmediatelyShortcut = Config.Bind("杂项", "立刻保存",
             new KeyboardShortcut(KeyCode.S, KeyCode.LeftControl, KeyCode.LeftAlt));
+        configShowEnemyListShortcut = Config.Bind("种子相关", "战斗开始时显示出怪列表", new KeyboardShortcut(KeyCode.Home));
+        configGetSeeds = Config.Bind("种子相关", "战斗开始时显示刷种子", new KeyboardShortcut(KeyCode.Insert));
+        configGetSeedNum = Config.Bind("种子相关", "期望种子刷取数", 20000, new ConfigDescription("滑动", new AcceptableValueRange<int>(1, (int)2e9)));
     }
 }

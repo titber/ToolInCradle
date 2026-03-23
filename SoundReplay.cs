@@ -44,7 +44,7 @@ public class SoundReplay {
             UILog.Instance.AddAlert("read from yml");
         }
 
-        if (Configs.configSaveImmediatelyShortcut.Value.IsDown()) {
+        if (Configs.configSaveSoundShortcut.Value.IsDown()) {
             var ser = new SerializerBuilder().Build();
             File.WriteAllText("sound.yml", ser.Serialize(replayQueue));
             UILog.Instance.AddAlert("wrote to yml");

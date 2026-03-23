@@ -4,6 +4,7 @@ using HarmonyLib;
 using m2d;
 using nel;
 using UnityEngine;
+using XX;
 
 namespace GenshinInCradle;
 
@@ -104,5 +105,13 @@ public class MoreModules {
         if (!Configs.configSuppressGLFlush.Value) return;
         // Console.WriteLine($"Suppressed useless GL.Flush()");
         __runOriginal = false;
+    }
+
+    [HarmonyPrefix]
+    [HarmonyPatch(typeof(XX.Logger), "fineTimeStampViewer")]
+    public static void onFineTimeStampViewer() {
+        if (!Configs.configAlwaysF7.Value) return;
+        X.DEBUGANNOUNCE = true;
+        X.DEBUGTIMESTAMP = true;
     }
 }

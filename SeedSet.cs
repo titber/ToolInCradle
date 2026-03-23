@@ -42,7 +42,7 @@ public class SeedSet {
     [HarmonyPatch(typeof(EnemySummoner), "activate")]
     [HarmonyPostfix]
     public static void onActivateOuter(EnemySummoner __instance) {
-        if (!Input.GetKey(KeyCode.Home)) return;
+        if (!Configs.configShowEnemyListShortcut.Value.IsPressed()) return;
         var player = __instance.getPlayer();
         var AKindRest =
             new List<SmnEnemyKind>(Utils.getField<List<SmnEnemyKind>>(player, "AKindRest"));
@@ -99,15 +99,8 @@ public class SeedSet {
         ref bool bgm_replaced,
         ref M2LpSummon ___Lp, M2LpSummon _Lp, ref bool __runOriginal) {
         try {
-            if (!Input.GetKey(KeyCode.Insert))
-                return;
-            int n;
-            if (Input.GetKey(KeyCode.Alpha5)) n = 200000;
-            else if (Input.GetKey(KeyCode.Alpha6)) n = 2000000;
-            else if (Input.GetKey(KeyCode.Alpha7)) n = 20000000;
-            else if (Input.GetKey(KeyCode.Alpha8)) n = 200000000;
-            else if (Input.GetKey(KeyCode.Alpha9)) n = 2000000000;
-            else n = 20000;
+            if(!Configs.configGetSeeds.Value.IsPressed()) return;
+            int n = Configs.configGetSeedNum.Value;
             var k = randCount;
             var battleString = __instance.GetManager().getSummonerScript(__instance.key, out _) ?? "";
             var ans = MessageBox.Show
@@ -139,7 +132,7 @@ public class SeedSet {
                 var s2 = NightController.Xors.RandseedFirst;
 
                 long writtenLength = 0;
-                for (var i = 1; i <= n; i++) {
+                for (int i = 1; i <= n; i++) {
                     for (var j = 0; j < 4; j++) {
                         var b = new byte[4];
                         random.NextBytes(b);
